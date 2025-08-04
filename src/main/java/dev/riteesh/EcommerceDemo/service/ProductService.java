@@ -1,5 +1,6 @@
 package dev.riteesh.EcommerceDemo.service;
 
+import dev.riteesh.EcommerceDemo.exceptions.ProductNotFoundException;
 import dev.riteesh.EcommerceDemo.models.Product;
 import org.springframework.stereotype.Service;
 
@@ -7,7 +8,9 @@ import java.util.List;
 
 
 public interface ProductService {
-    Product getSingleProduct(long id);
+
+    Product getSingleProduct(Long productId) throws ProductNotFoundException;
     List<Product> getAllProducts();
     Product createProduct(Product product);
+
 }

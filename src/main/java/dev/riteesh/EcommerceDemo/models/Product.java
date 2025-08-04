@@ -12,11 +12,22 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Product extends BaseModel{
+public class Product extends BaseModel {
     private String title;
     private String description;
     @ManyToOne
     private Category category;
     private String imageUrl;
-    private double price;
+    private Double price;
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", price=" + price +
+                ", imageUrl='" + imageUrl + '\'' +
+                ", category=" + category +
+                '}';
+    }
 }

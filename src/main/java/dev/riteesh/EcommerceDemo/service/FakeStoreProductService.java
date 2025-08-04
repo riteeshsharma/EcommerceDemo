@@ -1,5 +1,6 @@
 package dev.riteesh.EcommerceDemo.service;
 
+import dev.riteesh.EcommerceDemo.exceptions.ProductNotFoundException;
 import dev.riteesh.EcommerceDemo.models.Product;
 import org.springframework.stereotype.Service;
 
@@ -9,7 +10,7 @@ import java.util.List;
 public class FakeStoreProductService implements ProductService{
 
     @Override
-    public Product getSingleProduct(long id) {
+    public Product getSingleProduct(Long id) throws ProductNotFoundException {
         return null;
     }
 

@@ -17,7 +17,7 @@ import java.util.Date;
 public class BaseModel {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Long Id;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDateTime createdAt;
     @DateTimeFormat(pattern = "yyyy-MM-dd")

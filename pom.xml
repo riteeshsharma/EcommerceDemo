@@ -11,6 +11,7 @@
 	<groupId>dev.riteesh</groupId>
 	<artifactId>EcommerceDemo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
 	<name>EcommerceDemo</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
@@ -65,7 +66,12 @@
 			<artifactId>mysql-connector-j</artifactId>
 			<scope>runtime</scope>
 		</dependency>
-	</dependencies>
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-commons</artifactId>
+            <version>3.5.2</version>
+        </dependency>
+    </dependencies>
 
 
 	<build>
