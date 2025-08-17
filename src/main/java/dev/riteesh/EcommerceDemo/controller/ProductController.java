@@ -1,18 +1,16 @@
 package dev.riteesh.EcommerceDemo.controller;
 
 import dev.riteesh.EcommerceDemo.exceptions.ProductNotFoundException;
-import dev.riteesh.EcommerceDemo.models.Category;
-import dev.riteesh.EcommerceDemo.models.Product;
-import dev.riteesh.EcommerceDemo.repository.ProductRepository;
-import dev.riteesh.EcommerceDemo.service.ProductService;
 import dev.riteesh.EcommerceDemo.service.ProductServiceDemo;
+import dev.riteesh.EcommerceDemo.models.Product;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Optional;
+import java.util.List;
 
-@RestController("/products")
+@RestController
 public class ProductController {
 //    @RequestBody({
 //            "id": 0,
@@ -42,4 +40,9 @@ public class ProductController {
                 return new ResponseEntity<>(getRequestSingleProduct, HttpStatus.OK);
     }
 
+    @GetMapping("/Allproducts")
+    public ResponseEntity<Page<Product>> getAllProducts(@RequestParam("pageSize") Integer pageSize, @RequestParam("pageNumber") Integer pageNumber){
+        Page<Product> getRequestAllProducts = productService.getAllProducts(pageSize,pageNumber);
+        return new ResponseEntity<>(getRequestAllProducts, HttpStatus.OK);
+    }
 }

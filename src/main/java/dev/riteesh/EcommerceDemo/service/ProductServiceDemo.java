@@ -5,19 +5,21 @@ import dev.riteesh.EcommerceDemo.models.Category;
 import dev.riteesh.EcommerceDemo.models.Product;
 import dev.riteesh.EcommerceDemo.repository.CategoryRepository;
 import dev.riteesh.EcommerceDemo.repository.ProductRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 @Service("ProductServiceDemo")
 public class ProductServiceDemo implements ProductService{
-
-    private ProductRepository productRepository;;
+    @Autowired
+    private ProductRepository productRepository;
+    @Autowired
     private CategoryRepository categoryRepository;
-    public ProductServiceDemo(ProductRepository productRepository, CategoryRepository categoryRepository) {
-        this.productRepository = productRepository;
-        this.categoryRepository = categoryRepository;
-    }
 
     @Override
     public Product getSingleProduct(Long productId) throws ProductNotFoundException {
@@ -28,11 +30,11 @@ public class ProductServiceDemo implements ProductService{
         throw new ProductNotFoundException("Product not found");
     }
 
-
     @Override
-    public List<Product> getAllProducts() {
-        return null;
+    public Page<Product> getAllProducts(int pageSize, int pageNumber) {
+        return productRepository.findAll(PageRequest.of(pageNumber,pageSize));
     }
+
 
     @Override
     public Product createProduct(Product product) throws ProductNotFoundException {
