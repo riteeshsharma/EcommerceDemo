@@ -45,6 +45,7 @@ public class ProductServiceDemo implements ProductService{
             if(cat == null){
                 Category newCat = new Category();
                 newCat.setTitle(product.getCategory().getTitle());
+                newCat.setDescription(product.getCategory().getDescription());
                 Category newRow = categoryRepository.save(newCat);
                 product.setCategory(newRow);
             }

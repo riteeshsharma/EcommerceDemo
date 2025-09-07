@@ -1,8 +1,10 @@
 package dev.riteesh.EcommerceDemo.controller;
 
 import dev.riteesh.EcommerceDemo.exceptions.ProductNotFoundException;
+import dev.riteesh.EcommerceDemo.service.ProductService;
 import dev.riteesh.EcommerceDemo.service.ProductServiceDemo;
 import dev.riteesh.EcommerceDemo.models.Product;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,9 +23,9 @@ public class ProductController {
 //            "image": "http://example.com"
 //            })
 
-    private ProductServiceDemo productService;
+    private ProductService productService;
 
-    public ProductController(ProductServiceDemo productService) {
+    public ProductController(@Qualifier ("fakeStoreProductService") ProductService productService) {
         this.productService = productService;
     }
 
